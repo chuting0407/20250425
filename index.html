@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline' https://accounts.google.com;">
+    <meta http-equiv="Permissions-Policy" content="accelerometer=*, deviceorientation=*, devicemotion=*">
+
+    <title>作品集展示</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+    <!-- 選單 -->
+    <ul class="menu">
+      <li><a href="#" onclick="closeIframe()">首頁</a></li>
+      <li><a href="#" onclick="loadIframe('https://chuting0407.github.io/-/')">自我介紹</a></li>
+      <li class="dropdown">
+        <a href="#portfolio">作品集</a>
+        <ul class="submenu">
+          <li><a href="#" onclick="loadIframe('https://chuting0407.github.io/0307/')">第一周</a></li>
+          <li><a href="#" onclick="loadIframe('https://chuting0407.github.io/0314/')">第二周</a></li>
+          <li><a href="#" onclick="loadIframe('https://chuting0407.github.io/20250328/')">第三周</a></li>
+        </ul>
+      </li>
+      <li><a href="#" onclick="loadIframe('https://chuting0407.github.io/0425/')">測驗卷</a></li>
+      <li><a href="#" onclick="loadIframe('https://cfchen58.synology.me/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%882024/B2/week8/20250407_101522.mp4')">教學影片</a></li>
+    </ul>
+
+    <!-- 嵌入的 iframe -->
+    <iframe id="content-frame" src="" frameborder="0" width="100%" height="600"></iframe>
+
+    <script src="sketch.js"></script>
+  
+    <script>
+      // 動態載入 iframe 的內容
+      function loadIframe(url) {
+        const iframe = document.getElementById('content-frame');
+        if (iframe) {
+          console.log(`Loading URL: ${url}`);
+          iframe.src = url;
+        } else {
+          console.error('Iframe element not found!');
+        }
+      }
+
+      // 關閉 iframe 的內容
+      function closeIframe() {
+        const iframe = document.getElementById('content-frame');
+        if (iframe) {
+          console.log('Closing iframe');
+          iframe.src = '';
+        } else {
+          console.error('Iframe element not found!');
+        }
+      }
+    </script>
+  </body>
+</html>
